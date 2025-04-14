@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 jupyter
 pandas
 numpy
@@ -6,3 +7,13 @@ seaborn
 scikit-learn
 statsmodels
 scipy
+=======
+jupyter
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+statsmodels
+scipy
+>>>>>>> 119eaf9015b7ce64e98a617a7f98f5546913e081
