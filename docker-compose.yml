@@ -1,0 +1,38 @@
+
+services:
+  datascience-vscode:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: datascience-vscode
+    ports:
+      - "8888:8888"
+      - "8889:8889"
+    volumes:
+      - .:/workspace
+      - ./UTN-elearning-analisis-datos-avanzado:/workspace/notebooks
+      - notebooks-volume:/workspace/.jupyter
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=datascience2024
+      - JUPYTER_ROOT_DIR=/workspace
+    working_dir: /workspace
+    networks:
+      - datascience-network
+    restart: unless-stopped
+    command: >
+      bash -c "
+        jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root 
+        --NotebookApp.token='datascience2024' 
+        --NotebookApp.password='' 
+        --notebook-dir=/workspace
+      "
+ 
+networks:
+  datascience-network:
+    driver: bridge
+
+
+volumes:
+  notebooks-volume:
+ 

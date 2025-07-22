@@ -1,4 +1,5 @@
 jupyter
+jupyterlab
 pandas
 numpy
 matplotlib
@@ -7,7 +8,11 @@ scikit-learn
 statsmodels
 scipy
 plotly
-TQDM
-PyArrow
-OpenPyXL
+tqdm
+pyarrow
+openpyxl
 xlrd
+ipywidgets
+nbconvert
+jupyter-contrib-nbextensions
+ipykernel
