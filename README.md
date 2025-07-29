@@ -1,131 +1,147 @@
-# Data Science VSCode - Entorno Docker
+# 🎓 UTN - Análisis de Datos Avanzado y Machine Learning
 
-Este proyecto proporciona un entorno completo de Data Science utilizando Docker y Jupyter Lab, optimizado para el análisis de datos avanzado.
+[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://python.org)
+[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange.svg)](https://jupyter.org)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3-green.svg)](https://scikit-learn.org)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0-red.svg)](https://pytorch.org)
+
+## 📋 Descripción
+
+Repositorio completo para el curso de **Análisis de Datos Avanzado** de la Universidad Tecnológica Nacional (UTN), que incluye implementaciones prácticas, proyectos y una colección completa de libros de referencia en Machine Learning y Estadística.
 
 ## 🚀 Inicio Rápido
 
 ### Prerrequisitos
-- Docker Desktop instalado
-- PowerShell (Windows)
+- Docker Desktop instalado (opcional)
+- Python 3.11+
+- Jupyter Lab
 
-### Opción 1: Script Automático (Recomendado)
+### Opción 1: Docker (Recomendado)
 
-#### Uso básico:
-```powershell
-.\quick-start.ps1
-```
-
-#### Opciones avanzadas:
-```powershell
-.\quick-start.ps1 -Help                    # Ver ayuda
-.\quick-start.ps1 -SkipBuild              # Solo iniciar (imagen ya existe)
-.\quick-start.ps1 -ShowLogs               # Mostrar logs al final
-.\quick-start.ps1 -OpenBrowser:$false     # No abrir navegador automáticamente
+#### Script automático:
+```bash
+./quick-start.sh      # Linux/Mac
+# o
+.\quick-start.ps1     # Windows
 ```
 
 #### Detener servicios:
-```powershell
-.\quick-stop.ps1
+```bash
+./quick-stop.sh       # Linux/Mac
+# o
+.\quick-stop.ps1      # Windows
 ```
 
-### Opción 2: Configuración Manual
+### Opción 2: Instalación Local
 
-1. **Construir la imagen Docker:**
-   ```powershell
-   .\docker-helper.ps1 build
+1. **Instalar dependencias:**
+   ```bash
+   pip install -r requirements.txt
    ```
 
 2. **Iniciar Jupyter Lab:**
-   ```powershell
-   .\docker-helper.ps1 start
+   ```bash
+   jupyter lab
    ```
 
-3. **Acceder a Jupyter Lab:**
-   - URL: http://localhost:8888
-   - Token: `datascience2024`
-
-## 📋 Comandos Disponibles
-
-### Gestión de Servicios
-```powershell
-.\docker-helper.ps1 build     # Construir imagen
-.\docker-helper.ps1 start     # Iniciar servicios
-.\docker-helper.ps1 stop      # Detener servicios
-.\docker-helper.ps1 restart   # Reiniciar servicios
-.\docker-helper.ps1 status    # Ver estado
-```
-
-### Desarrollo y Debugging
-```powershell
-.\docker-helper.ps1 shell     # Abrir shell en contenedor
-.\docker-helper.ps1 python    # Consola Python interactiva
-.\docker-helper.ps1 logs      # Ver logs
-```
-
-### Gestión de Paquetes
-```powershell
-.\docker-helper.ps1 install pandas    # Instalar paquete
-.\docker-helper.ps1 install numpy     # Instalar otro paquete
-```
-
-### Utilidades
-```powershell
-.\docker-helper.ps1 backup    # Backup de notebooks
-.\docker-helper.ps1 info      # Información de Jupyter
-.\docker-helper.ps1 clean     # Limpiar Docker
-.\docker-helper.ps1 help      # Mostrar ayuda
-```
-
-## 📁 Estructura del Proyecto
+## 📁 Estructura del Repositorio
 
 ```
-DataScienceVSCode/
-├── UTN-elearning-analisis-datos-avanzado/  # Notebooks principales
-│   ├── notebooks/
-│   │   ├── clases/
-│   │   │   ├── ch1/ - ch4/                 # Capítulos del curso
-│   │   │   └── tbc/                        # Análisis TBC
-│   │   └── custom_tools/
-├── docker-helper.ps1                       # Script de gestión
-├── docker-compose.yml                      # Configuración Docker
-├── Dockerfile                              # Imagen personalizada
-└── requirements.txt                        # Dependencias Python
+📦 DataScienceVSCode/
+├── � notebooks/
+│   ├── 📚 ISLP_labs/                    # Introduction to Statistical Learning with Python
+│   ├── 📚 Machine-Learning-with-Pytorch-Scikit-Learn/
+│   ├── 📚 mml-book.github.io/           # Mathematics for Machine Learning
+│   ├── 📚 practical-statistics-for-data-scientists/
+│   ├── 🏆 kaggle_competitions/
+│   │   └── Titanic-Machine Learning from Disaster/
+│   └── 🎓 UTN-elearning-analisis-datos-avanzado/
+│       └── Unidades/
+│           ├── Unidad1/ - Análisis Exploratorio
+│           ├── Unidad2/ - Estadística Descriptiva
+│           ├── Unidad3/ - Distribuciones de Probabilidad
+│           ├── Unidad4/ - Inferencia Estadística
+│           └── Unidad5/ - Machine Learning
+├── 📋 Documentación/
+│   ├── README.md                        # Este archivo
+│   ├── RECURSOS_ML_ESTADISTICA.md       # Reporte de recursos
+│   ├── INDICE_NOTEBOOKS.md             # Índice de notebooks
+│   └── GUIA_CONFIGURACION.md            # Guía de configuración
+└── ⚙️ Configuración/
+    ├── requirements.txt                 # Dependencias Python
+    ├── docker-compose.yml              # Configuración Docker
+    └── Dockerfile                       # Imagen personalizada
 ```
 
-## 🛠️ Paquetes Incluidos
+## � Colección de Libros y Recursos
+
+### 🎯 **Libros de Machine Learning**
+
+#### 📖 **Introduction to Statistical Learning with Python (ISLP)**
+- **Ubicación**: `notebooks/ISLP_labs/`
+- **Descripción**: Laboratorios prácticos del famoso libro ISLR adaptado a Python
+- **Nivel**: Principiante a Intermedio
+- **Contenido**: 13 capítulos con ejercicios prácticos
+
+#### 🧠 **Machine Learning with PyTorch and Scikit-Learn**
+- **Ubicación**: `notebooks/Machine-Learning-with-Pytorch-Scikit-Learn/`
+- **Descripción**: Implementaciones completas de algoritmos ML con PyTorch y Scikit-Learn
+- **Nivel**: Intermedio a Avanzado
+- **Contenido**: 11 capítulos con proyectos prácticos
+
+#### 🔢 **Mathematics for Machine Learning**
+- **Ubicación**: `notebooks/mml-book.github.io/`
+- **Descripción**: Fundamentos matemáticos para ML
+- **Nivel**: Intermedio
+- **Contenido**: Álgebra lineal, cálculo, probabilidad y optimización
+
+#### 📊 **Practical Statistics for Data Scientists**
+- **Ubicación**: `notebooks/practical-statistics-for-data-scientists/`
+- **Descripción**: Estadística aplicada para ciencia de datos
+- **Nivel**: Principiante a Intermedio
+- **Contenido**: 7 capítulos con casos prácticos
+
+### 🏆 **Competencias y Proyectos**
+
+#### 🚢 **Kaggle - Titanic Competition**
+- **Ubicación**: `notebooks/kaggle_competitions/Titanic-Machine Learning from Disaster/`
+- **Descripción**: Predicción de supervivencia en el Titanic
+- **Técnicas**: Clasificación, feature engineering, ensemble methods
+
+#### 🎓 **Curso UTN - Análisis de Datos Avanzado**
+- **Ubicación**: `notebooks/UTN-elearning-analisis-datos-avanzado/`
+- **Descripción**: Proyecto completo del curso UTN
+- **Contenido**: 
+  - **Unidad 5/TP5**: Predicción de churn de clientes Telco
+  - **Proyecto TBC**: Análisis epidemiológico de tuberculosis
+  - **Actividades por unidad**: Ejercicios progresivos
+
+## �️ Tecnologías y Paquetes
 
 ### Core Data Science
 - **pandas** - Manipulación de datos
 - **numpy** - Computación numérica
-- **matplotlib** - Visualización básica
-- **seaborn** - Visualización estadística
-- **plotly** - Visualización interactiva
+- **matplotlib, seaborn, plotly** - Visualización
+- **scipy, statsmodels** - Estadística y modelos
 
 ### Machine Learning
-- **scikit-learn** - Algoritmos ML
-- **statsmodels** - Modelos estadísticos
-- **scipy** - Computación científica
+- **scikit-learn** - Algoritmos ML tradicionales
+- **PyTorch** - Deep Learning
+- **xgboost, lightgbm** - Gradient boosting
 
 ### Jupyter Ecosystem
 - **jupyterlab** - Interfaz principal
 - **ipywidgets** - Widgets interactivos
-- **jupyter-contrib-nbextensions** - Extensiones
 
-### Utilidades
-- **tqdm** - Barras de progreso
-- **pyarrow** - Formato de datos eficiente
-- **openpyxl** - Lectura/escritura Excel
-
-## 🔧 Configuración Avanzada
+## 🔧 Configuración Docker
 
 ### Puertos
 - **8888**: Jupyter Lab (principal)
 - **8889**: Puerto alternativo (disponible)
 
 ### Volúmenes
-- **Código fuente**: `/workspace` (todo el proyecto)
-- **Notebooks**: `/workspace/notebooks` (UTN notebooks)
-- **Labs**: `/workspace/ISLP_labs` (ISLP exercises)
+- **Notebooks**: `/workspace/notebooks` (colección completa)
+- **Proyectos**: `/workspace` (todo el repositorio)
 
 ### Variables de Entorno
 - `JUPYTER_TOKEN=datascience2024`
@@ -133,50 +149,62 @@ DataScienceVSCode/
 
 ## 🚨 Solución de Problemas
 
-### Error de permisos
+### Scripts de PowerShell
 ```powershell
 # En PowerShell como administrador
 Set-ExecutionPolicy RemoteSigned
-```
 
-### Error de permisos con scripts
-```powershell
-# Ejecutar solo para la sesión actual
+# Para una sesión específica
 Set-ExecutionPolicy Bypass -Scope Process -Force
 .\quick-start.ps1
 ```
 
-### PowerShell no reconoce el script
-```powershell
-# Usar ruta completa
-PowerShell.exe -ExecutionPolicy Bypass -File ".\quick-start.ps1"
-```
-
 ### Puerto ocupado
-```powershell
+```bash
 # Cambiar puerto en docker-compose.yml
 ports:
-  - "8801:8802"  # Usar puerto alternativo
+  - "8801:8888"  # Usar puerto alternativo
 ```
 
-### Memoria insuficiente
-```powershell
-# Aumentar memoria en Docker Desktop
-# Settings > Resources > Memory > 4GB+
-```
+## 📊 Casos de Uso Principales
 
-## 📊 Casos de Uso
+### 📈 **Para Estudiantes de UTN**
+- Material completo del curso "Análisis de Datos Avanzado"
+- Proyectos paso a paso desde estadística básica hasta ML
+- Datasets reales (TBC, Telco, familias)
 
-### Análisis de Datos TBC
-Los notebooks en `UTN-elearning-analisis-datos-avanzado/notebooks/tbc/` contienen:
-- Análisis exploratorio de datos TBC
-- Visualizaciones epidemiológicas
-- Modelos predictivos
+### 🎯 **Para Aprendizaje Autodidacta**
+- Progresión estructurada desde estadística hasta Deep Learning
+- 4 libros completos con ejercicios prácticos
+- Competencias de Kaggle para práctica
 
-### Ejercicios por Capítulo
-- **Unidad1**: Análisis de familias
-- **Unidad2**: Distribuciones de probabilidad
-- **Unidad3**: Modelos binomiales e hipergeométricos
-- **Unidad4**: Actividades prácticas con MPG dataset
-- **Unidad5**: Predicciones y clasificaciones, introducción ML.
+### 🏢 **Para Profesionales**
+- Casos de uso empresariales (churn prediction, análisis epidemiológico)
+- Código reutilizable y documentado
+- Best practices en ciencia de datos
+
+## 🤝 **Contribuciones**
+
+Este repositorio está en constante evolución. Las contribuciones son bienvenidas:
+
+1. **Fork** el repositorio
+2. **Crea** una rama para tu feature (`git checkout -b feature/nueva-caracteristica`)
+3. **Commit** tus cambios (`git commit -am 'Agregar nueva característica'`)
+4. **Push** a la rama (`git push origin feature/nueva-caracteristica`)
+5. **Abre** un Pull Request
+
+## 📝 **Licencia**
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+## 📞 **Contacto**
+
+Para preguntas sobre el curso UTN o este repositorio:
+- **Universidad**: Universidad Tecnológica Nacional
+- **Curso**: Análisis de Datos Avanzado
+- **GitHub**: [cmessoftware](https://github.com/cmessoftware)
+
+---
+
+⭐ **¡Si este repositorio te fue útil, no olvides darle una estrella!** ⭐
 
