@@ -1,7 +1,0 @@
-name: mml-book
-dependencies:
-  - numpy
-  - scipy
-  - matplotlib
-  - scikit-learn
-  - pandas
