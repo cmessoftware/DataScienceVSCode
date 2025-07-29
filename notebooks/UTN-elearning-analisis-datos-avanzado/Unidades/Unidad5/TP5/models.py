@@ -371,20 +371,60 @@ class ChurnPredictor:
         print(f"📊 Evaluando modelos...")
         print(f"   - Muestras de validación: {len(X_val):,}")
         
+        # Verificar que y_val esté en formato numérico
+        if not all(val in [0, 1] for val in y_val.unique()):
+            print(f"⚠️ Mapeando y_val a formato numérico...")
+            y_val = self.map_target(y_val, verbose=False)
+        
+        print(f"   - Valores únicos en y_val: {y_val.unique()}")
+        
         for name, model in self.models.items():
             print(f"   🔍 Evaluando {name}...")
             
-            # Predicciones
+            # Predicciones  
             y_pred = model.predict(X_val)
             y_pred_proba = model.predict_proba(X_val)[:, 1]
+            
+            # Debug: mostrar tipos de datos
+            print(f"   🔧 Debug para {name}:")
+            print(f"      - Tipo y_val: {type(y_val)}, valores únicos: {y_val.unique()}")
+            print(f"      - Tipo y_pred: {type(y_pred)}, valores únicos: {np.unique(y_pred)}")
+            
+            # Convertir y_val a numpy array para consistencia
+            if hasattr(y_val, 'values'):
+                y_val_array = y_val.values
+            else:
+                y_val_array = np.array(y_val)
+            
+            # Manejar predicciones - asegurar que sean numéricas
+            if hasattr(y_pred, 'dtype') and y_pred.dtype == 'object':
+                print(f"   🔧 Mapeando predicciones de {name} a formato numérico...")
+                y_pred_mapped = pd.Series(y_pred).map({'No': 0, 'Yes': 1})
+                if y_pred_mapped.isnull().any():
+                    print(f"      ⚠️ Valores no mapeables encontrados: {pd.Series(y_pred)[y_pred_mapped.isnull()].unique()}")
+                    # Si hay valores no mapeables, usar LabelEncoder
+                    from sklearn.preprocessing import LabelEncoder
+                    le = LabelEncoder()
+                    y_pred = le.fit_transform(y_pred)
+                    print(f"      🔧 Usando LabelEncoder: {np.unique(y_pred)}")
+                else:
+                    y_pred = y_pred_mapped.values
+                    print(f"      ✅ Mapeado exitoso: {np.unique(y_pred)}")
+            else:
+                # Asegurar que y_pred sea numérico
+                y_pred = np.array(y_pred, dtype=int)
+                
+            # Verificación final de tipos
+            print(f"   ✅ Tipos finales - y_val: {type(y_val_array)}, y_pred: {type(y_pred)}")
+            print(f"   ✅ Valores únicos finales - y_val: {np.unique(y_val_array)}, y_pred: {np.unique(y_pred)}")
                         
             # Calcular métricas
             metrics = {
-                'ROC_AUC': roc_auc_score(y_val, y_pred_proba),
-                'Accuracy': accuracy_score(y_val, y_pred),
-                'Precision': precision_score(y_val, y_pred),
-                'Recall': recall_score(y_val, y_pred),
-                'F1_Score': f1_score(y_val, y_pred)
+                'ROC_AUC': roc_auc_score(y_val_array, y_pred_proba),
+                'Accuracy': accuracy_score(y_val_array, y_pred),
+                'Precision': precision_score(y_val_array, y_pred),
+                'Recall': recall_score(y_val_array, y_pred),
+                'F1_Score': f1_score(y_val_array, y_pred)
             }
             
             results[name] = metrics

@@ -10,7 +10,6 @@ services:
       - "8889:8889"
     volumes:
       - .:/workspace
-      - ./UTN-elearning-analisis-datos-avanzado:/workspace/notebooks
       - notebooks-volume:/workspace/.jupyter
     environment:
       - JUPYTER_ENABLE_LAB=yes
