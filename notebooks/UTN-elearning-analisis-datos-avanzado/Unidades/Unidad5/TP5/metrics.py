@@ -332,6 +332,7 @@ class MetricsCalculator:
         print("=" * 60)
         
         # Métricas básicas
+        print('Call calculate_basic_metrics')
         basic_metrics = self.calculate_basic_metrics(y_true, y_pred, y_pred_proba)
         print(f"\n📊 Métricas Básicas:")
         for metric, value in basic_metrics.items():
