@@ -1,0 +1,10 @@
+artifact_location: file:///c:/Users/sergiosal/source/repos/DataScienceVSCode/notebooks/UTN-elearning-analisis-datos-avanzado/Unidades/Unidad5/TP5/mlruns/801834907042948001/models/m-428b9cef8f1d4f1b8056e56391e795ca/artifacts
+creation_timestamp: 1753846146981
+experiment_id: '801834907042948001'
+last_updated_timestamp: 1753846154809
+model_id: m-428b9cef8f1d4f1b8056e56391e795ca
+model_type: null
+name: model
+source_run_id: 49b6cf6c6b704b51ab08fffd2eaab1e3
+status: 2
+status_message: null

@@ -1,0 +1,11 @@
+# **Proyecto de Competencia Kaggle: Predicción de Abandono de Clientes**
+
+## **Curso:** Diplomado en Ciencia de Datos
+
+# **Nombres de los Miembros del Equipo:**
+### *   [Nombre Completo del Miembro 1]
+### *   [Nombre Completo del Miembro 2]
+### *   [Nombre Completo del Miembro 3]
+
+# **Objetivo:**
+## El objetivo de este proyecto es construir y evaluar varios modelos de clasificación para predecir si un cliente de una compañía de telecomunicaciones abandonará o no el servicio (churn). El rendimiento final del mejor modelo se medirá en la competencia de Kaggle a través de la **métrica ROC AUC**.

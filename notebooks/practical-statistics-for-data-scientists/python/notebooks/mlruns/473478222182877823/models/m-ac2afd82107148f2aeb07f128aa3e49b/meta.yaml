@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/sergiosal/source/repos/DataScienceVSCode/notebooks/practical-statistics-for-data-scientists/python/notebooks/mlruns/473478222182877823/models/m-ac2afd82107148f2aeb07f128aa3e49b/artifacts
+creation_timestamp: 1754975333594
+experiment_id: '473478222182877823'
+last_updated_timestamp: 1754975336421
+model_id: m-ac2afd82107148f2aeb07f128aa3e49b
+model_type: null
+name: model
+source_run_id: 7d2afe6371b740c4833017972b59d7b7
+status: 2
+status_message: null

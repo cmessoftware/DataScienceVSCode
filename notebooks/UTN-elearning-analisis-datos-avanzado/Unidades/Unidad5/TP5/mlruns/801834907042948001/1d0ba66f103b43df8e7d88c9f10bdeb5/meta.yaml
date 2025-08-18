@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/sergiosal/source/repos/DataScienceVSCode/notebooks/UTN-elearning-analisis-datos-avanzado/Unidades/Unidad5/TP5/mlruns/801834907042948001/1d0ba66f103b43df8e7d88c9f10bdeb5/artifacts
+end_time: 1753847911430
+entry_point_name: ''
+experiment_id: '801834907042948001'
+lifecycle_stage: active
+run_id: 1d0ba66f103b43df8e7d88c9f10bdeb5
+run_name: COMPARISON_Logistic_Regression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1753847911327
+status: 3
+tags: []
+user_id: sergiosal

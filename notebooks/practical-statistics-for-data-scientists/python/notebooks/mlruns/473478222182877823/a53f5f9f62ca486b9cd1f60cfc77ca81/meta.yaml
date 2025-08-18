@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/sergiosal/source/repos/DataScienceVSCode/notebooks/practical-statistics-for-data-scientists/python/notebooks/mlruns/473478222182877823/a53f5f9f62ca486b9cd1f60cfc77ca81/artifacts
+end_time: 1754975211591
+entry_point_name: ''
+experiment_id: '473478222182877823'
+lifecycle_stage: active
+run_id: a53f5f9f62ca486b9cd1f60cfc77ca81
+run_name: Decision Tree
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754975208208
+status: 3
+tags: []
+user_id: sergiosal

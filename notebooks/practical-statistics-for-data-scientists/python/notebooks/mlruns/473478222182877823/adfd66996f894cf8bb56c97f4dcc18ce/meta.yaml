@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/sergiosal/source/repos/DataScienceVSCode/notebooks/practical-statistics-for-data-scientists/python/notebooks/mlruns/473478222182877823/adfd66996f894cf8bb56c97f4dcc18ce/artifacts
+end_time: 1754975326637
+entry_point_name: ''
+experiment_id: '473478222182877823'
+lifecycle_stage: active
+run_id: adfd66996f894cf8bb56c97f4dcc18ce
+run_name: Random Forest - Config 1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754975323023
+status: 3
+tags: []
+user_id: sergiosal

@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/sergiosal/source/repos/DataScienceVSCode/notebooks/practical-statistics-for-data-scientists/python/notebooks/mlruns/473478222182877823/eb26dd6eb3ea451abc31f9f148754231/artifacts
+end_time: 1754975200522
+entry_point_name: ''
+experiment_id: '473478222182877823'
+lifecycle_stage: active
+run_id: eb26dd6eb3ea451abc31f9f148754231
+run_name: K-Nearest Neighbors
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754975196844
+status: 3
+tags: []
+user_id: sergiosal

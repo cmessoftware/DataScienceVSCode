@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/sergiosal/source/repos/DataScienceVSCode/notebooks/UTN-elearning-analisis-datos-avanzado/Unidades/Unidad5/TP5/mlruns/801834907042948001/8e2e71ab956f46c39d1ca1a7335c345f/artifacts
+end_time: 1754001569285
+entry_point_name: ''
+experiment_id: '801834907042948001'
+lifecycle_stage: active
+run_id: 8e2e71ab956f46c39d1ca1a7335c345f
+run_name: churn_prediction_run_20250731_193402
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754001242292
+status: 3
+tags: []
+user_id: sergiosal

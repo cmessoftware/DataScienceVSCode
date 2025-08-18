@@ -1,0 +1,20 @@
+name: ds
+channels:
+  - conda-forge
+channel_priority: strict
+dependencies:
+  - python=3.11
+  - jupyterlab
+  - ipykernel
+  - numpy
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - plotly
+  - xgboost
+  - lightgbm
+  - catboost
+  - mlflow
+  - optuna
+  - statsmodels

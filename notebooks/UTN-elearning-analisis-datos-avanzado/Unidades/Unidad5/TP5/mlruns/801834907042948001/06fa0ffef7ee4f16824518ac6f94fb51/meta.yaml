@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/sergiosal/source/repos/DataScienceVSCode/notebooks/UTN-elearning-analisis-datos-avanzado/Unidades/Unidad5/TP5/mlruns/801834907042948001/06fa0ffef7ee4f16824518ac6f94fb51/artifacts
+end_time: 1753919927782
+entry_point_name: ''
+experiment_id: '801834907042948001'
+lifecycle_stage: active
+run_id: 06fa0ffef7ee4f16824518ac6f94fb51
+run_name: Logistic_Regression_OPTIMIZED
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1753919917412
+status: 3
+tags: []
+user_id: sergiosal

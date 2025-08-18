@@ -1,0 +1,14 @@
+[build-system]
+requires = [
+    "numpy",
+    "scipy",
+    "jupyter",
+    "pandas",
+    "lxml",
+    "sklearn",
+    "joblib",
+    "statsmodels", 
+    "lifelines",
+    "pygam"
+]
+build-backend = "setuptools.build_meta"

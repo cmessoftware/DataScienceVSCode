@@ -13,6 +13,7 @@ warnings.filterwarnings("ignore")
 
 import time
 from datetime import datetime
+
 import numpy as np
 import pandas as pd
 from helpers import running_context
@@ -28,6 +29,7 @@ except ImportError:
         return None
 
 
+from scipy.stats import rv_continuous
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
@@ -41,16 +43,11 @@ from sklearn.metrics import (
     recall_score,
     roc_auc_score,
 )
+from sklearn.model_selection import RandomizedSearchCV
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer, OneHotEncoder, StandardScaler
-from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, StratifiedKFold
-from tqdm.auto import tqdm
-from datetime import datetime
-from joblib import parallel_backend
-from scipy.stats import rv_continuous
-
 
 # Importar tqdm para barra de progreso
 # try:
@@ -85,7 +82,7 @@ class FeatureEngineer(BaseEstimator, TransformerMixin):
             X["new_customer"] = (X["tenure"] < 6).astype(int)
         if "MonthlyCharges" in X.columns:
             X["high_monthly_charge"] = (X["MonthlyCharges"] > 80).astype(int)
-        
+
         return X
 
 
@@ -885,7 +882,6 @@ class ChurnPredictor:
         # Fallback (tu genérico)
         return self.create_preprocessor(X)
 
-    
     def create_pipeline(self, classifier):
         """
         Arma un pipeline completo con:
@@ -893,56 +889,82 @@ class ChurnPredictor:
         - Preprocesamiento numérico y categórico
         - Modelo final inyectado como parámetro
         """
-    
+
         # 🔧 Columnas numéricas y categóricas (ajustar según tus datos)
-        num_features = ['SeniorCitizen', 'tenure', 'MonthlyCharges', 'TotalCharges', 'avg_monthly']
-        bin_features = ['Partner', 'Dependents', 'PhoneService', 'PaperlessBilling', 
-                        'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 
-                        'TechSupport', 'StreamingTV', 'StreamingMovies']
-    
-        cat_features = ['gender', 'InternetService', 'Contract', 'PaymentMethod']
-    
-      
+        num_features = [
+            "SeniorCitizen",
+            "tenure",
+            "MonthlyCharges",
+            "TotalCharges",
+            "avg_monthly",
+        ]
+        bin_features = [
+            "Partner",
+            "Dependents",
+            "PhoneService",
+            "PaperlessBilling",
+            "OnlineSecurity",
+            "OnlineBackup",
+            "DeviceProtection",
+            "TechSupport",
+            "StreamingTV",
+            "StreamingMovies",
+        ]
+
+        cat_features = ["gender", "InternetService", "Contract", "PaymentMethod"]
+
         def _normalize_and_engineer(Z: pd.DataFrame) -> pd.DataFrame:
             Z = self._normalize_service_values(Z.copy())
             fe = FeatureEngineer()
             return fe.transform(Z)
 
-    
         feature_engineering = FunctionTransformer(_normalize_and_engineer)
-    
+
         # ⚙️ Preprocesamiento
-        num_pipeline = Pipeline(steps=[
-            ("imputer", SimpleImputer(strategy="median")),
-            ("scaler", StandardScaler())
-        ])
-    
-        bin_pipeline = Pipeline(steps=[
-            ("imputer", SimpleImputer(strategy="most_frequent"))
-            # No scaler ni encoding, ya están en formato 0/1 o Yes/No
-        ])
-    
-        cat_pipeline = Pipeline(steps=[
-            ("imputer", SimpleImputer(strategy="most_frequent")),
-            ("encoder", OneHotEncoder(drop="first", handle_unknown="ignore"))
-        ])
-    
-        preprocessor = ColumnTransformer(transformers=[
-            ("num", num_pipeline, num_features),
-            ("bin", "passthrough", bin_features),  # se asume que ya están preprocesadas como 0/1
-            ("cat", cat_pipeline, cat_features)
-        ])
-    
+        num_pipeline = Pipeline(
+            steps=[
+                ("imputer", SimpleImputer(strategy="median")),
+                ("scaler", StandardScaler()),
+            ]
+        )
+
+        bin_pipeline = Pipeline(
+            steps=[
+                ("imputer", SimpleImputer(strategy="most_frequent"))
+                # No scaler ni encoding, ya están en formato 0/1 o Yes/No
+            ]
+        )
+
+        cat_pipeline = Pipeline(
+            steps=[
+                ("imputer", SimpleImputer(strategy="most_frequent")),
+                ("encoder", OneHotEncoder(drop="first", handle_unknown="ignore")),
+            ]
+        )
+
+        preprocessor = ColumnTransformer(
+            transformers=[
+                ("num", num_pipeline, num_features),
+                (
+                    "bin",
+                    "passthrough",
+                    bin_features,
+                ),  # se asume que ya están preprocesadas como 0/1
+                ("cat", cat_pipeline, cat_features),
+            ]
+        )
+
         # 🧪 Pipeline completo
-        pipeline = Pipeline(steps=[
-            ("features", feature_engineering),
-            ("preprocessor", preprocessor),
-            ("classifier", classifier)
-        ])
-    
+        pipeline = Pipeline(
+            steps=[
+                ("features", feature_engineering),
+                ("preprocessor", preprocessor),
+                ("classifier", classifier),
+            ]
+        )
+
         return pipeline
 
-   
     def create_models(self, X: pd.DataFrame):
         """
         Crear diccionario de modelos con pipelines optimizados por algoritmo.
@@ -1500,7 +1522,6 @@ class ChurnPredictor:
         return y_mapped
 
 
-
 # def hyperparameter_tuning(model, param_grid, X_train, y_train, cv=5, scoring="roc_auc", mode="auto", n_iter=20):
 #     """
 #     Optimiza hiperparámetros con GridSearchCV o RandomizedSearchCV.
@@ -1563,10 +1584,12 @@ class ChurnPredictor:
 #     return search
 
 
-def hyperparameter_tuning(model, param_grid, X_train, y_train, cv=5, scoring="roc_auc", mode="auto", n_iter=20):
+def hyperparameter_tuning(
+    model, param_grid, X_train, y_train, cv=5, scoring="roc_auc", mode="auto", n_iter=20
+):
     """
     Optimización robusta de hiperparámetros para cualquier modelo de clasificación.
-    
+
     Parámetros:
     - model: pipeline con el estimador ('classifier')
     - param_grid: grilla o distribución de hiperparámetros
@@ -1575,7 +1598,7 @@ def hyperparameter_tuning(model, param_grid, X_train, y_train, cv=5, scoring="ro
     - scoring: métrica (default 'roc_auc')
     - mode: 'quick' (random), 'accuracy' (grid), o 'auto'
     - n_iter: solo usado en modo 'quick'
-    
+
     Retorna:
     - Objeto GridSearchCV o RandomizedSearchCV entrenado
     """
@@ -1583,7 +1606,7 @@ def hyperparameter_tuning(model, param_grid, X_train, y_train, cv=5, scoring="ro
     print("🧪 Iniciando optimización de hiperparámetros...")
     print(f"   - CV: {cv} | Scoring: {scoring} | Modo: {mode}")
 
-    #Preprocesar como lo hace el pipeline
+    # Preprocesar como lo hace el pipeline
     X_train_proc = self._normalize_service_values(X_train.copy())
     X_train_proc = FeatureEngineer().transform(X_train_proc)
 
@@ -1598,9 +1621,15 @@ def hyperparameter_tuning(model, param_grid, X_train, y_train, cv=5, scoring="ro
 
     # Determinar modo real si está en 'auto'
     if mode == "auto":
-        mode = "quick" if any(isinstance(v, rv_continuous) for v in param_grid.values()) else "accuracy"
+        mode = (
+            "quick"
+            if any(isinstance(v, rv_continuous) for v in param_grid.values())
+            else "accuracy"
+        )
 
-    print(f"🚀 Tipo de búsqueda: {'RandomizedSearchCV' if mode == 'quick' else 'GridSearchCV'}")
+    print(
+        f"🚀 Tipo de búsqueda: {'RandomizedSearchCV' if mode == 'quick' else 'GridSearchCV'}"
+    )
 
     # CV estratificado
     cv_splitter = StratifiedKFold(n_splits=cv, shuffle=True, random_state=42)
@@ -1642,7 +1671,9 @@ def hyperparameter_tuning(model, param_grid, X_train, y_train, cv=5, scoring="ro
 
     end_time = datetime.now()
     duration = end_time - start_time
-    print(f"✅ Búsqueda completada en {duration} (Fin: {end_time.strftime('%H:%M:%S')})")
+    print(
+        f"✅ Búsqueda completada en {duration} (Fin: {end_time.strftime('%H:%M:%S')})"
+    )
 
     # Mostrar resultados
     try:

@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/sergiosal/source/repos/DataScienceVSCode/notebooks/practical-statistics-for-data-scientists/python/notebooks/mlruns/473478222182877823/2ed1d579c3ff495f8714ca09deff3ade/artifacts
+end_time: 1754975204834
+entry_point_name: ''
+experiment_id: '473478222182877823'
+lifecycle_stage: active
+run_id: 2ed1d579c3ff495f8714ca09deff3ade
+run_name: Gradient Boosting
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754975200526
+status: 3
+tags: []
+user_id: sergiosal

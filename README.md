@@ -7,70 +7,57 @@
 
 ## 📋 Descripción
 
-Repositorio completo para el curso de **Análisis de Datos Avanzado** de la Universidad Tecnológica Nacional (UTN), que incluye implementaciones prácticas, proyectos y una colección completa de libros de referencia en Machine Learning y Estadística.
+Repositorio completo para el curso de **Ciencia de datos con python** , que incluye implementaciones prácticas, proyectos y una colección completa de libros de referencia en Machine Learning y Estadística.
 
 ## 🚀 Inicio Rápido
 
+
 ### Prerrequisitos
-- Docker Desktop instalado (opcional)
 - Python 3.11+
 - Jupyter Lab
 
-### Opción 1: Docker (Recomendado)
-
-#### Script automático:
-```bash
-./quick-start.sh      # Linux/Mac
-# o
-.\quick-start.ps1     # Windows
-```
-
-#### Detener servicios:
-```bash
-./quick-stop.sh       # Linux/Mac
-# o
-.\quick-stop.ps1      # Windows
-```
-
-### Opción 2: Instalación Local
-
+### Instalación Local
 1. **Instalar dependencias:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
+  ```bash
+  pip install -r requirements.txt
+  ```
 2. **Iniciar Jupyter Lab:**
-   ```bash
-   jupyter lab
-   ```
+  ```bash
+  jupyter lab
+  ```
+
 
 ## 📁 Estructura del Repositorio
-
 ```
-📦 DataScienceVSCode/
-├── � notebooks/
-│   ├── 📚 ISLP_labs/                    # Introduction to Statistical Learning with Python
-│   ├── 📚 Machine-Learning-with-Pytorch-Scikit-Learn/
-│   ├── 📚 mml-book.github.io/           # Mathematics for Machine Learning
-│   ├── 📚 practical-statistics-for-data-scientists/
-│   ├── 🏆 kaggle_competitions/
-│   │   └── Titanic-Machine Learning from Disaster/
-│   └── 🎓 UTN-elearning-analisis-datos-avanzado/
-│       └── Unidades/
-│           ├── Unidad1/ - Análisis Exploratorio
-│           ├── Unidad2/ - Estadística Descriptiva
-│           ├── Unidad3/ - Distribuciones de Probabilidad
-│           ├── Unidad4/ - Inferencia Estadística
-│           └── Unidad5/ - Machine Learning
-├── 📋 Documentación/
-│   ├── README.md                        # Este archivo
-│   ├── RECURSOS_ML_ESTADISTICA.md       # Reporte de recursos
-│   ├── INDICE_NOTEBOOKS.md             # Índice de notebooks
-│   └── GUIA_CONFIGURACION.md            # Guía de configuración
-└── ⚙️ Configuración/
-    ├── requirements.txt                 # Dependencias Python
-    ├── docker-compose.yml              # Configuración Docker
-    └── Dockerfile                       # Imagen personalizada
+DataScienceVSCode/
+├── notebooks/
+│   ├── ISLP_labs/                        # Introduction to Statistical Learning with Python
+│   ├── Machine-Learning-with-Pytorch-Scikit-Learn/ # PyTorch & Scikit-Learn
+│   ├── mml-book.github.io/               # Mathematics for Machine Learning
+│   ├── practical-statistics-for-data-scientists/    # Estadística aplicada
+│   ├── kaggle_competitions/
+│   │   ├── Titanic-Machine Learning from Disaster/
+│   │   └── Binary-Classification-with-a-Bank-Dataset/
+│   ├── mlflow_experiments/               # Experimentos MLflow
+│   ├── UTN-elearning-analisis-datos-avanzado/
+│   │   └── Unidades/
+│   │       ├── Unidad1/
+│   │       ├── Unidad2/
+│   │       ├── Unidad3/
+│   │       ├── Unidad4/
+│   │       ├── Unidad5/
+│   │       ├── Unidad6/
+│   │       └── tbc/
+│   └── test_linter.ipynb
+├── src/
+│   └── ds_utils/
+├── tests/
+├── artifacts/
+├── mlruns/
+├── RECURSOS_ML_ESTADISTICA.md
+├── setup_ds_mamba.ps1
+├── setup_ds_mamba.sh
+└── README.md
 ```
 
 ## � Colección de Libros y Recursos
@@ -133,19 +120,6 @@ Repositorio completo para el curso de **Análisis de Datos Avanzado** de la Univ
 - **jupyterlab** - Interfaz principal
 - **ipywidgets** - Widgets interactivos
 
-## 🔧 Configuración Docker
-
-### Puertos
-- **8888**: Jupyter Lab (principal)
-- **8889**: Puerto alternativo (disponible)
-
-### Volúmenes
-- **Notebooks**: `/workspace/notebooks` (colección completa)
-- **Proyectos**: `/workspace` (todo el repositorio)
-
-### Variables de Entorno
-- `JUPYTER_TOKEN=datascience2024`
-- `JUPYTER_ROOT_DIR=/workspace`
 
 ## 🚨 Solución de Problemas
 
@@ -156,14 +130,6 @@ Set-ExecutionPolicy RemoteSigned
 
 # Para una sesión específica
 Set-ExecutionPolicy Bypass -Scope Process -Force
-.\quick-start.ps1
-```
-
-### Puerto ocupado
-```bash
-# Cambiar puerto en docker-compose.yml
-ports:
-  - "8801:8888"  # Usar puerto alternativo
 ```
 
 ## 📊 Casos de Uso Principales
@@ -193,18 +159,117 @@ Este repositorio está en constante evolución. Las contribuciones son bienvenid
 4. **Push** a la rama (`git push origin feature/nueva-caracteristica`)
 5. **Abre** un Pull Request
 
+
+# 📚 Referencias y Recursos de Machine Learning y Estadística
+
+## 📖 Libros y Recursos Disponibles en este Repositorio
+
+Este repositorio incluye materiales y notebooks de los siguientes libros de referencia en Machine Learning y Estadística:
+
+### 🤖 **Machine Learning y Data Science**
+
+#### 1. **ISLP Labs - Introduction to Statistical Learning with Python**
+- 📂 **Ubicación**: `/notebooks/ISLP_labs/`
+- 📝 **Descripción**: Implementación completa en Python del famoso libro "Introduction to Statistical Learning"
+- 🔗 **Temas cubiertos**:
+  - Regresión Linear y Logística
+  - Árboles de Decisión y Random Forest
+  - Support Vector Machines
+  - K-Means y Clustering
+  - Cross-validation y Bootstrap
+  - Análisis Discriminante (LDA/QDA)
+
+#### 2. **Machine Learning with PyTorch and Scikit-Learn**
+- 📂 **Ubicación**: `/notebooks/Machine-Learning-with-Pytorch-Scikit-Learn/`
+- 📝 **Descripción**: Implementaciones prácticas combinando PyTorch y scikit-learn
+- 🔗 **Temas cubiertos**:
+  - Deep Learning con PyTorch
+  - Redes Neuronales desde cero
+  - Computer Vision y NLP
+  - MLOps y despliegue de modelos
+
+#### 3. **Mathematics for Machine Learning**
+- 📂 **Ubicación**: `/notebooks/mml-book.github.io/`
+- 📝 **Descripción**: Fundamentos matemáticos para Machine Learning
+- 🔗 **Temas cubiertos**:
+  - Álgebra Linear
+  - Cálculo y Optimización
+  - Probabilidad y Estadística
+  - Análisis de Componentes Principales
+
+### 📊 **Estadística Aplicada**
+
+#### 4. **Practical Statistics for Data Scientists**
+- 📂 **Ubicación**: `/notebooks/practical-statistics-for-data-scientists/`
+- 📝 **Descripción**: Estadística práctica aplicada a ciencia de datos
+- 🔗 **Temas cubiertos**:
+  - Estadística descriptiva y exploratoria
+  - Distribuciones de probabilidad
+  - Inferencia estadística
+  - Diseño experimental
+  - Regresión avanzada
+
+### 🏆 **Competencias Kaggle**
+
+#### 5. **Kaggle Competitions**
+- 📂 **Ubicación**: `/notebooks/kaggle_competitions/`
+- 📝 **Descripción**: Soluciones a competencias de Kaggle
+- 🔗 **Proyectos incluidos**:
+  - **Titanic**: Predicción de supervivencia
+  - Y más competencias en desarrollo...
+
+## 🚀 Cómo usar estos recursos
+
+### Navegación por los libros:
+```bash
+# Explorar ISLP Labs
+cd /notebooks/ISLP_labs/
+
+# Ver Machine Learning con PyTorch
+cd /notebooks/Machine-Learning-with-Pytorch-Scikit-Learn/
+
+# Revisar estadística práctica
+cd /notebooks/practical-statistics-for-data-scientists/
+```
+
+### Estructura típica de cada libro:
+- `📁 chapters/` - Notebooks por capítulo
+- `📁 datasets/` - Datasets de ejemplo
+- `📁 solutions/` - Soluciones a ejercicios
+- `📄 README.md` - Guía de uso específica
+
+## 💡 Recomendaciones de estudio
+
+### Para principiantes:
+1. **Comenzar con ISLP Labs** - Fundamentos sólidos
+2. **Practical Statistics** - Comprensión estadística
+3. **Kaggle Competitions** - Práctica hands-on
+
+### Para nivel intermedio/avanzado:
+1. **Mathematics for ML** - Profundizar en teoría
+2. **PyTorch & Scikit-Learn** - Implementaciones avanzadas
+3. **Proyectos personales** - Aplicar conocimientos
+
+## 🔗 Enlaces útiles
+
+- [ISLP Official Website](https://www.statlearning.com/)
+- [PyTorch Documentation](https://pytorch.org/docs/)
+- [Scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html)
+- [Kaggle Learn](https://www.kaggle.com/learn)
+
 ## 📝 **Licencia**
 
 Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
 ## 📞 **Contacto**
 
-Para preguntas sobre el curso UTN o este repositorio:
-- **Universidad**: Universidad Tecnológica Nacional
-- **Curso**: Análisis de Datos Avanzado
+Para preguntas sobre el curso o este repositorio:
+- **Curso**: Ciencia de Datos con python.
 - **GitHub**: [cmessoftware](https://github.com/cmessoftware)
 
 ---
 
 ⭐ **¡Si este repositorio te fue útil, no olvides darle una estrella!** ⭐
 
+---
+*Última actualización: Julio 2025*
