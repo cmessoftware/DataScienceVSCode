@@ -1,0 +1,22 @@
+artifact_path: file:///C:/Users/sergiosal/source/repos/DataScienceVSCode/notebooks/practical-statistics-for-data-scientists/python/notebooks/mlruns/473478222182877823/models/m-b515f9bf70624ea9a27d02581d6a6b90/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.2
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.0
+mlflow_version: 3.1.2
+model_id: m-b515f9bf70624ea9a27d02581d6a6b90
+model_size_bytes: 766
+model_uuid: m-b515f9bf70624ea9a27d02581d6a6b90
+prompts: null
+run_id: 6edaa692a8aa42748161890c77c8f891
+utc_time_created: '2025-08-12 05:06:30.336131'
