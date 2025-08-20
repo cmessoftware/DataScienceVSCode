@@ -1,8 +1,3 @@
-              precision    recall  f1-score   support
-
-           0     0.9725    0.9910    0.9817     18300
-           1     0.8787    0.6988    0.7785      1700
-
-    accuracy                         0.9662     20000
-   macro avg     0.9256    0.8449    0.8801     20000
-weighted avg     0.9646    0.9662    0.9644     20000
+version https://git-lfs.github.com/spec/v1
+oid sha256:f6e9395f430fa3248f22716e9c527cf41460a537759a125968e618496638cd71
+size 334
